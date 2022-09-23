@@ -24,6 +24,40 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Users
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
+
+    // Courses
+    Route::delete('courses/destroy', 'CoursesController@massDestroy')->name('courses.massDestroy');
+    Route::post('courses/media', 'CoursesController@storeMedia')->name('courses.storeMedia');
+    Route::post('courses/ckmedia', 'CoursesController@storeCKEditorImages')->name('courses.storeCKEditorImages');
+    Route::resource('courses', 'CoursesController');
+
+    // Lessons
+    Route::delete('lessons/destroy', 'LessonsController@massDestroy')->name('lessons.massDestroy');
+    Route::post('lessons/media', 'LessonsController@storeMedia')->name('lessons.storeMedia');
+    Route::post('lessons/ckmedia', 'LessonsController@storeCKEditorImages')->name('lessons.storeCKEditorImages');
+    Route::resource('lessons', 'LessonsController');
+
+    // Tests
+    Route::delete('tests/destroy', 'TestsController@massDestroy')->name('tests.massDestroy');
+    Route::resource('tests', 'TestsController');
+
+    // Questions
+    Route::delete('questions/destroy', 'QuestionsController@massDestroy')->name('questions.massDestroy');
+    Route::post('questions/media', 'QuestionsController@storeMedia')->name('questions.storeMedia');
+    Route::post('questions/ckmedia', 'QuestionsController@storeCKEditorImages')->name('questions.storeCKEditorImages');
+    Route::resource('questions', 'QuestionsController');
+
+    // Question Options
+    Route::delete('question-options/destroy', 'QuestionOptionsController@massDestroy')->name('question-options.massDestroy');
+    Route::resource('question-options', 'QuestionOptionsController');
+
+    // Test Results
+    Route::delete('test-results/destroy', 'TestResultsController@massDestroy')->name('test-results.massDestroy');
+    Route::resource('test-results', 'TestResultsController');
+
+    // Test Answers
+    Route::delete('test-answers/destroy', 'TestAnswersController@massDestroy')->name('test-answers.massDestroy');
+    Route::resource('test-answers', 'TestAnswersController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
